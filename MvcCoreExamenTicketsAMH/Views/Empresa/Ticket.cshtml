@@ -1,0 +1,41 @@
+﻿@model Ticket
+
+<form method="post">
+    <label>Introduce el id del ticket a buscar:</label>
+    <input type="text" name="idticket" class="form-control" />
+    <button type="submit" class="btn btn-info">Mostrar</button>
+</form>
+
+@if (Model != null)
+            {
+<table class="table table-info">
+    <thead>
+        <tr>
+            <th>
+              Fecha
+            </th>
+            <th>
+                Importe
+            </th>
+            <th>
+                Producto
+            </th>
+            <th>
+                File Name
+            </th>
+            <th>
+                Storage Path
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>@Model.Fecha</td>
+            <td>@Model.Importe</td>
+            <td>@Model.Producto</td>
+            <td>@Model.FileName</td>
+            <td>@Model.StoragePath</td>
+        </tr>
+    </tbody>
+</table>
+            }

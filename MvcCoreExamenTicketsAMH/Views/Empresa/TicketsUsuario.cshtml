@@ -1,0 +1,73 @@
+﻿@model IEnumerable<MvcCoreExamenTicketsAMH.Models.Ticket>
+
+@{
+    ViewData["Title"] = "TicketsUsuario";
+}
+
+<h1>TicketsUsuario</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<form method="post">
+    <label>Introduce el id de usuario:</label>
+    <input type="text" name="idusuario" class="form-control" />
+    <button type="submit" class="btn btn-info">Mostrar</button>
+</form>
+
+
+@if (Model != null)
+{
+    <table class="table table-info">
+        <thead>
+            <tr>
+                <th>
+                    @Html.DisplayNameFor(model => model.Fecha)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Importe)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Producto)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.FileName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.StoragePath)
+                </th>
+                <th>
+                    Acciones
+                </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Fecha)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Importe)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Producto)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FileName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.StoragePath)
+                    </td>
+                    <td>
+                        <a class="btn btn-warning" asp-action="ProcessTicket" asp-route-idticket="@item.IdTicket" asp-route-filename="@item.FileName">Procesar</a>
+                        
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
